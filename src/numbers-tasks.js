@@ -225,8 +225,8 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  return Number(value) ? Number(value) : def;
 }
 
 /**
@@ -314,8 +314,15 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  let bool;
+  if (num % 2 === 0) {
+    bool = true;
+  }
+  if (num < 1) {
+    bool = false;
+  }
+  return bool;
 }
 
 /**
@@ -604,7 +611,7 @@ function getRandomInteger(/* min, max */) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.sqrt(a ** 2 + b ** 2);
+  return Math.hypot(a, b);
 }
 
 /**
