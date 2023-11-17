@@ -107,8 +107,9 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const angle = Math.atan2(y2, x2) - Math.atan2(y1, x1);
+  return angle >= 0 ? angle : angle + 2 * Math.PI;
 }
 
 /**
@@ -257,8 +258,25 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index < 0) {
+    return undefined;
+  }
+  if (index === 0) {
+    return 0;
+  }
+  if (index === 1) {
+    return 1;
+  }
+  let a = 0;
+  let b = 1;
+  let c;
+  for (let i = 2; i <= index; i += 1) {
+    c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
 }
 
 /**
@@ -364,8 +382,8 @@ function numberToStringInBase(number, base) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  return Number.parseFloat(number).toExponential(fractionDigits);
 }
 
 /**
@@ -379,8 +397,8 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toF(fractionDigits);
 }
 
 /**
@@ -409,8 +427,8 @@ function toPrecision(number, precision) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  return Number(number);
 }
 
 /**
@@ -596,8 +614,10 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  const mini = Math.ceil(min);
+  const maxim = Math.floor(max);
+  return Math.floor(Math.random() * (maxim - mini + 1)) + mini;
 }
 
 /**
