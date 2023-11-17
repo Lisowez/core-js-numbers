@@ -126,8 +126,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  const str = value.toString();
-  return +str[str.length - 1];
+  const num = value;
+  return num % 10;
 }
 
 /**
@@ -333,14 +333,7 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  let bool;
-  if (num % 2 === 0) {
-    bool = true;
-  }
-  if (num < 1) {
-    bool = false;
-  }
-  return bool;
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -398,7 +391,7 @@ function toExponential(number, fractionDigits) {
  * 12.345, 1   => '12.3'
  */
 function toFixed(number, fractionDigits) {
-  return number.toF(fractionDigits);
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -428,7 +421,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return Number(number);
+  return Number(number).valueOf();
 }
 
 /**
@@ -447,7 +440,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number.isNaN(number) !== true;
+  return Number.isFinite(number);
 }
 
 /**
@@ -599,7 +592,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  return firstNumber > secondNumber ? firstNumber : secondNumber;
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
